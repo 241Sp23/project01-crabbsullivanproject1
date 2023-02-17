@@ -5,10 +5,7 @@
  */
 package project01;
 
-/**
- *
- * @author
- */
+//
 public class Project01 {
 
     /**
