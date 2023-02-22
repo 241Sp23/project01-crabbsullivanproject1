@@ -48,5 +48,18 @@ public class Project01 {
     public static String[][] find(Scanner fileInput) {
         input = new Scanner(fileInput);
     }
+    
+    public static void searchForShow(String[][] dataSet, String show){
+        
+    }
+    
+    public static void filterOnType(String[][] dataSet, String type){
+        
+    }
+    
+    public static void highestDaysInTopTen(String[][] dataSet){
+        
+    }
+   
 
 }
