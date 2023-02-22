@@ -23,7 +23,6 @@ public class Project01 {
 
         //Opening and reading File
         File inputFile = new File("netflix.txt");
-        Scanner input = new Scanner(inputFile);
 
         //User prompt while loop
         System.out.println("What would you like to do");
@@ -35,12 +34,19 @@ public class Project01 {
         System.out.print("Choice: ");
         choice = object.next();
         while (choice != "q") {
+            while (input.hasNext()) {
+                find(inputFile);
 
+            }
             System.out.println();
             System.out.print("Choice: ");
             choice = object.next();
         }
 
+    }
+
+    public static String[][] find(Scanner fileInput) {
+        input = new Scanner(fileInput);
     }
 
 }
