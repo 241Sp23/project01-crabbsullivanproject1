@@ -53,7 +53,7 @@ public class Project01 {
             else if("s".equals(choice)){
                 System.out.print("What TV Show or Movie would you like to search for: ");
                 String mediaChoice = object.next();
-                searchForShow();
+                
             }
             else if("h".equals(choice)){
                 highestDaysInTopTen()
@@ -83,9 +83,10 @@ public class Project01 {
     }
 
     public static String[][] find(Scanner fileInput) {
-        
+        String[][] netflixArray = new String[7100][6];
         while(fileInput.hasNext()){
-        
+            String record = fileInput.nextLine();
+            String[] line = record.split(",");  
     }
     }
     
