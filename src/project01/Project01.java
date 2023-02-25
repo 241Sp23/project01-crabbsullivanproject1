@@ -87,7 +87,7 @@ public class Project01 {
         for (int i = 1; i < dataSet[i].length; i++) {
             if (dataSet[i][2] == show) {
                 count++;
-                showFile.printf("%-12s%-7s%-36s%-12s%-6s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3]);
+                showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
             }
         }
 
