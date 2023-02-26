@@ -42,7 +42,7 @@ public class Project01 {
             if ("f".equals(choice)) {
                 System.out.print("Would you like to filter on TV Show, Movie, or Stand-Up Comedy: ");
                 String typeChoice = object.next();
-                filterOnType();
+                filterOnType(netflix, typeChoice);
             } else if ("d".equals(choice)) {
                 System.out.print("What week would you like to search for (mm/dd/yyyy): ");
                 String dateChoice = object.next();
@@ -99,8 +99,14 @@ public class Project01 {
         showFile.close();
     }
 
-    public static void filterOnType(String[][] dataSet, String type) {
-
+    public static void filterOnType(String[][] dataSet, String type) throws FileNotFoundException {
+        PrintWriter typeFile = new PrintWriter("type.txt");
+        for (int i = 1; i < dataSet[i].length; i++) {
+            if (dataSet[i][3] == type) {
+                typeFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
+            }
+        }
+        typeFile.close();
     }
 
     public static void highestDaysInTopTen(String[][] dataSet) {
