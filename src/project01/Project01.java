@@ -39,12 +39,6 @@ public class Project01 {
         choice = object.next();
         while (!"q".equals(choice)) {
             String[][] netflix = find(file);
-             for (int i = 1; i < netflix.length; i++) {
-                for(int x = 1; x < netflix[i].length; x++) {
-                    System.out.print(netflix[i][x] + " ");
-                }
-                 System.out.println("");
-                 }
             if ("f".equals(choice)) {
                 System.out.print("Would you like to filter on TV Show, Movie, or Stand-Up Comedy: ");
                 String typeChoice = object.next();
