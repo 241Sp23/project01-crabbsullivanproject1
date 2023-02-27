@@ -46,14 +46,14 @@ public class Project01 {
             } else if ("d".equals(choice)) {
                 System.out.print("What week would you like to search for (mm/dd/yyyy): ");
                 String dateChoice = object.next();
-                filterOnDate();
+                filterOnDate(netflix, dateChoice);
             } else if ("s".equals(choice)) {
                 System.out.print("What TV Show or Movie would you like to search for: ");
                 String mediaChoice = object.next();
                 searchForShow(netflix, mediaChoice);
 
             } else if ("h".equals(choice)) {
-                highestDaysInTopTen()
+                highestDaysInTopTen(netflix);
             } else {
                 System.out.println("Invalid Input");
 
@@ -69,6 +69,7 @@ public class Project01 {
             }
 
         }
+       
 
     }
 
@@ -77,6 +78,12 @@ public class Project01 {
         while (fileInput.hasNext()) {
             String record = fileInput.nextLine();
             String[] line = record.split(",");
+            for (int i = 1; i < netflixArray[0].length; i++) {
+                for(int x = 1; x < netflixArray[i].length; x++) {
+                    netflixArray[i][x] = line[i];
+                
+            }
+        }
         }
         return netflixArray;
     }
@@ -90,7 +97,6 @@ public class Project01 {
                 showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
             }
         }
-
         if (count > 0) {
             System.out.println("The number of weeks " + show + "appeared in: " + count);
         } else {
@@ -108,8 +114,29 @@ public class Project01 {
         }
         typeFile.close();
     }
+    
+    public static void filterOnDate(String[][] dataSet, String date) throws FileNotFoundException{
+        PrintWriter showFile = new PrintWriter("date.txt");
+        for (int i = 1; i < dataSet[i].length; i++) {
+            if (dataSet[i][0] == date) {
+                showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
+            }
+        }
+        showFile.close();
+    }
 
     public static void highestDaysInTopTen(String[][] dataSet) {
+        int max = 0;
+        String maxShow = null;
+        for (int i = 1; i < dataSet[i].length; i++) {
+            if (Integer.parseInt(dataSet[i][5]) > max) {
+               max = Integer.parseInt(dataSet[i][5]);
+               maxShow = dataSet[i][2];
+            }
+        }
+        System.out.println("The show/movie with the highest number of consecutive "
+                + "days in the top ten is:" + maxShow + "with" + max + "days!");
+        
 
     }
 
