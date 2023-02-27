@@ -75,15 +75,12 @@ public class Project01 {
     }
 
     public static String[][] find(Scanner fileInput) {
-        String[][] netflixArray = new String[7100][6];
-        while (fileInput.hasNext()) {
-            String record = fileInput.nextLine();
-            String[] line = record.split(",");
-            for (int i = 0; i < netflixArray[0].length; i++) {
-                for (int x = 0; x < netflixArray[i].length; x++) {
-                    netflixArray[i][x] = line[i];
-
-                }
+        String[][] netflixArray = new String[7101][6];
+        while (fileInput.hasNextLine()) {   
+            for (int i = 0; i < netflixArray.length; i++) {
+                String record = fileInput.nextLine();
+                String[] line = record.split(",");
+                netflixArray[i] = line;
             }
         }
         return netflixArray;
@@ -92,7 +89,7 @@ public class Project01 {
     public static void searchForShow(String[][] dataSet, String show) throws FileNotFoundException {
         int count = 0;
         PrintWriter showFile = new PrintWriter("searchResults.txt");
-        for (int i = 1; i < dataSet[i].length; i++) {
+        for (int i = 1; i < dataSet.length; i++) {
             if (dataSet[i][2] == show) {
                 count++;
                 showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
@@ -108,7 +105,7 @@ public class Project01 {
 
     public static void filterOnType(String[][] dataSet, String type) throws FileNotFoundException {
         PrintWriter typeFile = new PrintWriter("type.txt");
-        for (int i = 1; i < dataSet[i].length; i++) {
+        for (int i = 1; i < dataSet.length; i++) {
             if (dataSet[i][3] == type) {
                 typeFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
             }
@@ -118,7 +115,7 @@ public class Project01 {
 
     public static void filterOnDate(String[][] dataSet, String date) throws FileNotFoundException {
         PrintWriter showFile = new PrintWriter("date.txt");
-        for (int i = 1; i < dataSet[i].length; i++) {
+        for (int i = 1; i < dataSet.length; i++) {
             if (dataSet[i][0] == date) {
                 showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
             }
@@ -129,7 +126,7 @@ public class Project01 {
     public static void highestDaysInTopTen(String[][] dataSet) {
         int max = 0;
         String maxShow = null;
-        for (int i = 1; i < dataSet[i].length; i++) {
+        for (int i = 1; i < dataSet.length; i++) {
             if (Integer.parseInt(dataSet[i][5]) > max) {
                 max = Integer.parseInt(dataSet[i][5]);
                 maxShow = dataSet[i][2];
