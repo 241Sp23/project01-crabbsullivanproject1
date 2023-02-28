@@ -42,42 +42,39 @@ public class Project01 {
 
         //While loop
         while (!"q".equals(choice)) {
-            while (file.hasNext()) {
-                //Puts data on array
-                String[][] netflix = find(file);
-                //Filters type of show/movie
-                if ("f".equals(choice)) {
-                    System.out.print("Would you like to filter on TV Show, Movie, or Stand-Up Comedy: ");
-                    String typeChoice = object.next();
-                    filterOnType(netflix, typeChoice);
-                } //Searches for everything on the given date
-                else if ("d".equals(choice)) {
-                    System.out.print("What week would you like to search for (mm/dd/yyyy): ");
-                    String dateChoice = object.next();
-                    filterOnDate(netflix, dateChoice);
-                } //Search for show
-                else if ("s".equals(choice)) {
-                    System.out.print("What TV Show or Movie would you like to search for: ");
-                    String mediaChoice = object.next();
-                    searchForShow(netflix, mediaChoice);
 
-                } //Gives top 10
-                else if ("h".equals(choice)) {
-                    highestDaysInTopTen(netflix);
-                } else {
-                    System.out.println("Invalid Input");
-                }
-
-                System.out.println();
-                System.out.println("What would you like to do");
-                System.out.println("Menu (Choose the following or Q to quit):");
-                System.out.println("F -Filter on Type");
-                System.out.println("D -Filter on Date");
-                System.out.println("S -Search by show");
-                System.out.println("H -Highest Days in Top Ten");
-                System.out.print("Choice: ");
-
+            //Puts data on array
+            String[][] netflix = find(file);
+            //Filters type of show/movie
+            if ("f".equals(choice)) {
+                System.out.print("Would you like to filter on TV Show, Movie, or Stand-Up Comedy: ");
+                String typeChoice = object.next();
+                filterOnType(netflix, typeChoice);
+            } //Searches for everything on the given date
+            else if ("d".equals(choice)) {
+                System.out.print("What week would you like to search for (mm/dd/yyyy): ");
+                String dateChoice = object.next();
+                filterOnDate(netflix, dateChoice);
+            } //Search for show
+            else if ("s".equals(choice)) {
+                System.out.print("What TV Show or Movie would you like to search for: ");
+                String mediaChoice = object.next();
+                searchForShow(netflix, mediaChoice);
+            } //Gives top 10
+            else if ("h".equals(choice)) {
+                highestDaysInTopTen(netflix);
+            } else {
+                System.out.println("Invalid Input");
             }
+
+            System.out.println();
+            System.out.println("What would you like to do");
+            System.out.println("Menu (Choose the following or Q to quit):");
+            System.out.println("F -Filter on Type");
+            System.out.println("D -Filter on Date");
+            System.out.println("S -Search by show");
+            System.out.println("H -Highest Days in Top Ten");
+            System.out.print("Choice: ");
             choice = object.next();
         }
         //Closing File
