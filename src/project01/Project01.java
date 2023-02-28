@@ -40,12 +40,11 @@ public class Project01 {
         System.out.print("Choice: ");
         choice = object.next();
 
-        //Puts data on array
-        String[][] netflix = find(file);
-
         //While loop
         while (!"q".equals(choice)) {
             while (file.hasNext()) {
+                //Puts data on array
+                String[][] netflix = find(file);
                 //Filters type of show/movie
                 if ("f".equals(choice)) {
                     System.out.print("Would you like to filter on TV Show, Movie, or Stand-Up Comedy: ");
