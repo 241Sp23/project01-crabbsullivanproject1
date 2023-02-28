@@ -5,6 +5,7 @@
  */
 package project01;
 
+//importing packages
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
@@ -16,7 +17,7 @@ public class Project01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException {
-
+        //Setting user input variable
         String choice;
         //Scanner
         Scanner object = new Scanner(System.in);
@@ -26,6 +27,7 @@ public class Project01 {
         myChooser.showOpenDialog(null);
         File netflixFile = myChooser.getSelectedFile();
 
+        //File Scanner
         Scanner file = new Scanner(netflixFile);
 
         //User prompt while loop
@@ -37,23 +39,31 @@ public class Project01 {
         System.out.println("H -Highest Days in Top Ten");
         System.out.print("Choice: ");
         choice = object.next();
+
+        //Puts data on array
+        String[][] netflix = find(file);
+
+        //While loop
         while (!"q".equals(choice)) {
             while (file.hasNext()) {
-                String[][] netflix = find(file);
+                //Filters type of show/movie
                 if ("f".equals(choice)) {
                     System.out.print("Would you like to filter on TV Show, Movie, or Stand-Up Comedy: ");
                     String typeChoice = object.next();
                     filterOnType(netflix, typeChoice);
-                } else if ("d".equals(choice)) {
+                } //Searches for everything on the given date
+                else if ("d".equals(choice)) {
                     System.out.print("What week would you like to search for (mm/dd/yyyy): ");
                     String dateChoice = object.next();
                     filterOnDate(netflix, dateChoice);
-                } else if ("s".equals(choice)) {
+                } //Search for show
+                else if ("s".equals(choice)) {
                     System.out.print("What TV Show or Movie would you like to search for: ");
                     String mediaChoice = object.next();
                     searchForShow(netflix, mediaChoice);
 
-                } else if ("h".equals(choice)) {
+                } //Gives top 10
+                else if ("h".equals(choice)) {
                     highestDaysInTopTen(netflix);
                 } else {
                     System.out.println("Invalid Input");
@@ -71,6 +81,7 @@ public class Project01 {
             }
             choice = object.next();
         }
+        //Closing File
         file.close();
 
     }
