@@ -67,8 +67,9 @@ public class Project01 {
                 System.out.println("S -Search by show");
                 System.out.println("H -Highest Days in Top Ten");
                 System.out.print("Choice: ");
-                choice = object.next();
+
             }
+            choice = object.next();
         }
         file.close();
 
@@ -76,7 +77,7 @@ public class Project01 {
 
     public static String[][] find(Scanner fileInput) {
         String[][] netflixArray = new String[7101][6];
-        while (fileInput.hasNextLine()) {   
+        while (fileInput.hasNextLine()) {
             for (int i = 0; i < netflixArray.length; i++) {
                 String record = fileInput.nextLine();
                 String[] line = record.split(",");
@@ -133,7 +134,7 @@ public class Project01 {
             }
         }
         System.out.println("The show/movie with the highest number of consecutive "
-                + "days in the top ten is:" + maxShow + "with" + max + "days!");
+                + "days in the top ten is: " + maxShow + " with " + max + " days!");
 
     }
 
