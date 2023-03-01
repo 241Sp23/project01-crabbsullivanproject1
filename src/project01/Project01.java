@@ -95,6 +95,7 @@ public class Project01 {
     public static void searchForShow(String[][] dataSet, String show) throws FileNotFoundException, IOException {
         int count = 0;
         try (PrintWriter showFile = new PrintWriter("searchResults.txt")) {
+            showFile.println("Results for: " + show);
             for (int i = 1; i < dataSet.length; i++) {
                 String dataLower = (dataSet[i][2]).toLowerCase();
                 String showLower = show.toLowerCase();
@@ -127,6 +128,7 @@ public class Project01 {
 
     public static void filterOnDate(String[][] dataSet, String date) throws FileNotFoundException, IOException {
          try (PrintWriter showFile = new PrintWriter("date.txt")) {
+             showFile.println("Results for: " + date);
             for (int i = 1; i < dataSet.length; i++) {
                 if (dataSet[i][0].equals(date)) {
                         showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
