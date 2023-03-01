@@ -94,19 +94,18 @@ public class Project01 {
 
     public static void searchForShow(String[][] dataSet, String show) throws FileNotFoundException, IOException {
         int count = 0;
-        try (FileWriter showFile = new FileWriter("date.txt")) {
+        try (PrintWriter showFile = new PrintWriter("searchResults.txt")) {
             for (int i = 1; i < dataSet.length; i++) {
                 String dataLower = (dataSet[i][2]).toLowerCase();
                 String showLower = show.toLowerCase();
                 if (dataLower.equals(showLower)) {
-                    for (int x = 0; x < dataSet[i].length; x++) {
-                        showFile.write(dataSet[i][x] + " ");
-                        count ++;
-                    }
+                    showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
+                    count ++;
+                    
                 }
             }
             if (count > 0) {
-                System.out.println("The number of weeks " + show + " appeared in: " + count/6);
+                System.out.println("The number of weeks " + show + " appeared in: " + count);
             }
             else {
                 System.out.println("Show not found");
@@ -115,30 +114,26 @@ public class Project01 {
     }
 
     public static void filterOnType(String[][] dataSet, String type) throws FileNotFoundException, IOException {
-        try (FileWriter showFile = new FileWriter("type.txt")) {
+        try (PrintWriter showFile = new PrintWriter("type.txt")) {
             for (int i = 1; i < dataSet.length; i++) {
                 String dataLower = (dataSet[i][3]).toLowerCase();
                 String typeLower = type.toLowerCase();
                 if (dataLower.equals(typeLower)) {
-                    for (int x = 0; x < dataSet[i].length; x++) {
-                        showFile.write(dataSet[i][x] + " ");
-                    }
+                    showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
                 }
             }
         }
     }
 
     public static void filterOnDate(String[][] dataSet, String date) throws FileNotFoundException, IOException {
-         try (FileWriter showFile = new FileWriter("searchResults.txt")) {
+         try (PrintWriter showFile = new PrintWriter("date.txt")) {
             for (int i = 1; i < dataSet.length; i++) {
                 if (dataSet[i][0].equals(date)) {
-                    for (int x = 0; x < dataSet[i].length; x++) {
-                        showFile.write(dataSet[i][x] + " ");
+                        showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
                     }
                 }
             }
          }
-    }
 
     public static void highestDaysInTopTen(String[][] dataSet) {
         int max = 0;
