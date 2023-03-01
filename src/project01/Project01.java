@@ -100,6 +100,7 @@ public class Project01 {
                 String dataLower = (dataSet[i][2]).toLowerCase();
                 String showLower = show.toLowerCase();
                 if (dataLower.equals(showLower)) {
+                    showFile.print("     ");
                     showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
                     count ++;
                     
@@ -116,10 +117,12 @@ public class Project01 {
 
     public static void filterOnType(String[][] dataSet, String type) throws FileNotFoundException, IOException {
         try (PrintWriter showFile = new PrintWriter("type.txt")) {
+            showFile.println("Results for: " + type);
             for (int i = 1; i < dataSet.length; i++) {
                 String dataLower = (dataSet[i][3]).toLowerCase();
                 String typeLower = type.toLowerCase();
                 if (dataLower.equals(typeLower)) {
+                    showFile.print("     ");
                     showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
                 }
             }
@@ -131,6 +134,7 @@ public class Project01 {
              showFile.println("Results for: " + date);
             for (int i = 1; i < dataSet.length; i++) {
                 if (dataSet[i][0].equals(date)) {
+                        showFile.print("     ");
                         showFile.printf("%-12s%-7s%-36s%-12s%-13s%-5s\n", dataSet[i][0], dataSet[i][1], dataSet[i][2], dataSet[i][3], dataSet[i][4], dataSet[i][5]);
                     }
                 }
