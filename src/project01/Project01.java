@@ -94,7 +94,7 @@ public class Project01 {
 
     public static void searchForShow(String[][] dataSet, String show) throws FileNotFoundException, IOException {
         int count = 0;
-        try (FileWriter showFile = new FileWriter("searchResults.txt")) {
+        try (FileWriter showFile = new FileWriter("date.txt")) {
             for (int i = 1; i < dataSet.length; i++) {
                 String dataLower = (dataSet[i][2]).toLowerCase();
                 String showLower = show.toLowerCase();
@@ -115,28 +115,29 @@ public class Project01 {
     }
 
     public static void filterOnType(String[][] dataSet, String type) throws FileNotFoundException, IOException {
-        try (FileWriter typeFile = new FileWriter("type.txt")) {
+        try (FileWriter showFile = new FileWriter("type.txt")) {
             for (int i = 1; i < dataSet.length; i++) {
-                String dataLower = (dataSet[i][2]).toLowerCase();
+                String dataLower = (dataSet[i][3]).toLowerCase();
                 String typeLower = type.toLowerCase();
-                if (dataLower.equals(typeLower))
-                    for (int x = 0; i < dataSet[i].length; x++) {
-                        typeFile.write(dataSet[i][x] + " ");
+                if (dataLower.equals(typeLower)) {
+                    for (int x = 0; x < dataSet[i].length; x++) {
+                        showFile.write(dataSet[i][x] + " ");
                     }
                 }
-        }
             }
+        }
+    }
 
     public static void filterOnDate(String[][] dataSet, String date) throws FileNotFoundException, IOException {
-        FileWriter showFile = new FileWriter("date.txt");
-        for (int i = 1; i < dataSet.length; i++) {
-            if (dataSet[i][0].equals(date)) {
-                for (int x = 0; i < dataSet[i].length; x++){
-                    showFile.write(dataSet[i][x] + " ");
+         try (FileWriter showFile = new FileWriter("searchResults.txt")) {
+            for (int i = 1; i < dataSet.length; i++) {
+                if (dataSet[i][0].equals(date)) {
+                    for (int x = 0; x < dataSet[i].length; x++) {
+                        showFile.write(dataSet[i][x] + " ");
+                    }
                 }
-        }
-        showFile.close();
-    }
+            }
+         }
     }
 
     public static void highestDaysInTopTen(String[][] dataSet) {
